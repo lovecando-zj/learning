@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 除了可以作为函数的中间返回语句使用，yield 关键字还可以作为函数的中间参数使用。
+      // 上一次让生成器函数暂停的 yield 关键字会接收到传给 next()方法的第一个值。
+      // 这里有个地方不太好理解——第一次调用 next()传入的值不会被使用，因为这一次调用是为了开始执行生成器函数
+      function* generatorFn(initial) {
+        console.log(initial);
+        console.log(yield);
+        console.log(yield);
+      }
+      let generatorObject = generatorFn("foo");
+      generatorObject.next("bar"); // foo
+      generatorObject.next("baz"); // baz
+      generatorObject.next("qux"); // qux
+      //   yield 关键字可以同时用于输入和输出，如下例所示：
+      function* generatorFn2() {
+        // yield;
+        return yield "foo";
+      }
+      let generatorObject2 = generatorFn2();
+      console.log(generatorObject2.next()); // { done: false, value: 'foo' }
+      console.log(generatorObject2.next("bar")); // { done: true, value: 'bar' }
+      console.log(generatorObject2.next());
+
+      function* generatorQ(n) {
+        for (let i = 0; i < n; i++) {
+          yield i;
+        }
+      }
+      for (const x of generatorQ(5)) {
+        console.log(x);
+      }
+      console.log(Array.from(generatorQ(10)));
+
+      function* nTimes(n) {
+        if (n > 0) {
+          yield* nTimes(n - 1);
+          yield n - 1;
+        }
+      }
+      for (const x of nTimes(3)) {
+        console.log(x);
+      }
+    </script>
+  </body>
+</html>
