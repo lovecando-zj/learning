@@ -53,4 +53,6 @@ inheritPrototype(SubType, SuperType);
 SubType.prototype.sayAge = function () {
   console.log(this.age);
 };
-let 
+let test=new SubType('v',555)
+console.log(test);
+console.log(test.__proto__===SubType.prototype);
