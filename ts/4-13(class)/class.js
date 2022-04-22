@@ -61,17 +61,18 @@ console.log(e instanceof leader); // true
 //抽象基类，可供其他类继承，但本身不会被实例化
 class Vehicle {
   constructor() {
-      console.log(new.target);//通过在实例化时检测 new.target 是不是抽象基类，可以阻止对抽象基类的实例化：
-      if (new.target === Vehicle) {
-        throw new Error('Vehicle cannot be directly instantiated');}
-        if (!this.foo) {
-            throw new Error('Inheriting class must define foo()');
-            } 
+    console.log(new.target); //通过在实例化时检测 new.target 是不是抽象基类，可以阻止对抽象基类的实例化：
+    if (new.target === Vehicle) {
+      throw new Error("Vehicle cannot be directly instantiated");
+    }
+    if (!this.foo) {
+      throw new Error("Inheriting class must define foo()");
+    }
     this.hasEngine = true;
   }
   static identify() {
-    console.log('vehicle');
-    } 
+    console.log("vehicle");
+  }
 }
 class Bus extends Vehicle {
   constructor() {
@@ -81,10 +82,23 @@ class Bus extends Vehicle {
     console.log(this); // Bus { hasEngine: true }
   }
   static identify() {
-    super.identify();//在静态方法中可以通过 super 调用继承的类上定义的静态方法
-    } 
-    foo(){
-    }
+    super.identify(); //在静态方法中可以通过 super 调用继承的类上定义的静态方法
+  }
+  foo() {}
 }
 new Bus();
-new Vehicle()
+// new Vehicle();
+//类混入
+class Mixed {
+  constructor(){
+    console.log('Mixed');
+  }
+}
+function mixed() {
+  console.log("我是混入");
+  return Mixed;
+}
+class extendMixed extends mixed {}
+const exp=new extendMixed
+new Mixed
+
