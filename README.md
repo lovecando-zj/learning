@@ -1,2 +1,0 @@
-# learning
-study every day
