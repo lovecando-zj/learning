@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const mapList = new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+      ]);
+      console.log(mapList.get("a"));
+      mapList.set("d", 4);
+
+      console.log(mapList[Symbol.iterator]());
+      for (let i of mapList[Symbol.iterator]()) {
+        console.log(i);
+      }
+      for (const i of mapList.keys()) {
+        console.log(i);
+      }
+      for (const i of mapList.entries()) {
+        console.log(i);
+      }
+      //weakMap是map的子集，是以object作为key
+      let key1 = {};
+      let key2 = { a: 2 };
+      const weakmap = new WeakMap([[key1, "1111"]]);
+      weakmap.set(key2, 33333);
+      console.log(weakmap.get(key1));
+
+      // 使用数组初始化集合
+      const s1 = new Set(["val1", "val2", "val3"]);
+      console.log(s1.size); // 3
+      // 使用自定义迭代器初始化集合
+      const s2 = new Set({
+        [Symbol.iterator]: function* () {
+          yield "val1";
+          yield "val2";
+          yield "val3";
+        },
+      });
+      console.log(s2.size); // 3
+      s1.add("5555");
+      s1.delete("val1");
+      s1.has("val1");
+      console.log(s1);
+      //weakset，弱集合中的值只能是 Object 或者继承自 Object 的类型
+      const weakset = new WeakSet([{ a: 555 }]);
+      console.log(weakset);
+    </script>
+  </body>
+</html>

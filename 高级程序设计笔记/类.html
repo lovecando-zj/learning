@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //与函数表达式类似，类表达式在它们被求值前也不能引用。不过，与函数定义不同的是，虽然函数声明可以提升，但类定义不能
+      //另一个跟函数声明不同的地方是，函数受函数作用域限制，而类受块作用域限制：
+      console.log(FunctionExpression); // undefined
+      var FunctionExpression = function () {};
+      console.log(FunctionExpression); // function() {}
+      console.log(FunctionDeclaration); // FunctionDeclaration() {}
+      function FunctionDeclaration() {}
+      console.log(FunctionDeclaration); // FunctionDeclaration() {}
+      console.log(ClassExpression); // undefined
+      var ClassExpression = class {};
+      console.log(ClassExpression); // class {}
+    //   console.log(ClassDeclaration); // ReferenceError: ClassDeclaration is not defined
+      class ClassDeclaration {}
+      console.log(ClassDeclaration); // class ClassDeclaration {}
+
+     //类实例化时传入的参数会用作构造函数的参数。如果不需要参数，则类名后面的括号也是可选的：
+      let student=class {
+          constructor(data){
+              this.data=data
+          }
+          test(){
+              console.log(111111);
+          }
+          static add(){
+              console.log(this,'我是静态');
+          }
+      }
+      console.log(student.name);
+      let student1=new student()
+      student1.test()
+      student.add()
+
+
+    </script>
+  </body>
+</html>
