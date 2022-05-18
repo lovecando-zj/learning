@@ -24,3 +24,15 @@ function qwq(fn: cons) {
   let q = new fn("lll");
   let w = fn(55555);
 }
+//函数重载
+function heavy(obj: number): number;
+// function heavy(x: number, y: string): number;
+function heavy(
+  obj: number,
+  x?: number,
+  y?: string
+): number  {
+  return 0;
+}
+
+

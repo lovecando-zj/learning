@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <script>
-              let arr = [2, 3, 4, 5];
-      let arr2 = Array.from(
-        arr,
-        function (i) {
-          return i ** this.q;
-        },
-        { q: 2 }
-      );
-      console.log(arr2);
-      const a = ["foo", "bar", "baz", "qux"];
-      // 因为这些方法都返回迭代器，所以可以将它们的内容
-      // 通过 Array.from()直接转换为数组实例
-      const aKeys = Array.from(a.keys());
-      const aValues = Array.from(a.values());
-      const aEntries = Array.from(a.entries());
-      console.log(aKeys); // [0, 1, 2, 3]
-      console.log(aValues); // ["foo", "bar", "baz", "qux"]
-      console.log(aEntries); // [[0, "foo"], [1, "bar"], [2, "baz"], [3, "qux"]]
-    </script>
+  <script>
+    let arr = [2, 3, 4, 5];
+    let arr2 = Array.from(
+      arr,
+      function (i) {
+        return i ** this.q;
+      },
+      { q: 2 }
+    );
+    console.log(arr2);
+    const a = ["foo", "bar", "baz", "qux"];
+    // 因为这些方法都返回迭代器，所以可以将它们的内容
+    // 通过 Array.from()直接转换为数组实例
+    const aKeys = Array.from(a.keys());
+    const aValues = Array.from(a.values());
+    const aEntries = Array.from(a.entries());
+    console.log(aKeys); // [0, 1, 2, 3]
+    console.log(aValues); // ["foo", "bar", "baz", "qux"]
+    console.log(aEntries); // [[0, "foo"], [1, "bar"], [2, "baz"], [3, "qux"]]
+  </script>
 </body>
+
 </html>

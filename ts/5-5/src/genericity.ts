@@ -5,14 +5,20 @@ function example<t, q>(name: t, age: q): q {
 }
 example("888", 888); //此处类型推论t,q为string，number
 example<number, string>(99, "99"); //此处指定类型
-function example2<t>(n:t,q:t):t{
-    return n
+function example2<t>(n: t, q: t): t {
+  return n;
 }
-example2<string|number>('999',999)//此处指定类型
+example2<string | number>("999", 999); //此处指定类型
 //泛型接口
-interface genericity {
+interface genericity<f> {
+  (n: f): f;
+}
+interface genericity2 {
   <f>(n: f): f;
 }
+const testGenericity: genericity<number> = function <t>(arg: t): t {
+  return arg;
+};
 //泛型约束
 function test<t>(arr: t[]): t[] {
   //定义参数中必须含有length属性，可定义数组实现约束
